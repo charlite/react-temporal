@@ -1,6 +1,6 @@
 # react-temporal
 
-[![npm version](https://badge.fury.io/js/@charlite/react-temporal.svg)](https://www.npmjs.com/package/@charlite/react-temporal)
+[![npm version](https://badge.fury.io/js/@charlite%2Freact-temporal.svg)](https://www.npmjs.com/package/@charlite/react-temporal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![CI](https://github.com/charlite/react-temporal/actions/workflows/ci.yml/badge.svg)](https://github.com/charlite/react-temporal/actions/workflows/ci.yml)
