@@ -83,4 +83,4 @@ The package is built with `strict: true`. All hooks use explicit parameter and r
 
 ## Source of Temporal types
 
-Runtime types are sourced from `@js-temporal/polyfill`, which matches the TC39 Temporal specification. Native `Temporal` in modern browsers is structurally compatible at runtime.
+Runtime types are sourced from `temporal-polyfill`, which tracks the TC39 Temporal specification. Native `Temporal` in modern browsers is structurally compatible at runtime.

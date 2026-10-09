@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Temporal } from '../temporal';
+import { useTemporalTicker } from '../internal/useTemporalTicker';
 import type { UseTemporalClockOptions, TemporalInstant } from '../types';
 
 /**
  * Returns the current Temporal.Instant, updating at a configurable interval.
- * Alias-friendly clock hook for live UIs (timers, dashboards, etc.).
  */
 export function useTemporalClock(options?: UseTemporalClockOptions): TemporalInstant {
-    const { intervalMs = 1000 } = options ?? {};
-    const [now, setNow] = useState(() => Temporal.Now.instant());
+    const { intervalMs = 1000, pauseWhenHidden = false } = options ?? {};
 
-    useEffect(() => {
-        const interval = setInterval(() => setNow(Temporal.Now.instant()), intervalMs);
-        return () => clearInterval(interval);
-    }, [intervalMs]);
+    const getNow = useCallback(() => Temporal.Now.instant(), []);
 
-    return now;
+    return useTemporalTicker({
+        intervalMs,
+        pauseWhenHidden,
+        getSnapshot: getNow,
+    });
 }

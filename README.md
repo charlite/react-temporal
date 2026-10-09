@@ -1,15 +1,17 @@
 # react-temporal
 
-[![npm version](https://badge.fury.io/js/react-temporal.svg)](https://www.npmjs.com/package/react-temporal)
+[![npm version](https://badge.fury.io/js/react-temporal.svg)](https://www.npmjs.com/package/@xarlizard/react-temporal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![CI](https://github.com/charlite/react-temporal/actions/workflows/ci.yml/badge.svg)](https://github.com/charlite/react-temporal/actions/workflows/ci.yml)
 
-**react-temporal** is a React hooks library for date and time, built on the JavaScript [Temporal API](https://tc39.es/proposal-temporal/). Temporal reached **Stage 4** in 2026 and ships natively in Chrome 144+, Firefox 139+, and Edge 144+. This library uses native Temporal when available and falls back to a polyfill for Node.js, Safari, and older browsers.
+**react-temporal** is a React hooks library for date and time, built on the JavaScript [Temporal API](https://tc39.es/proposal-temporal/). Temporal reached **Stage 4** in 2026 and ships natively in Chrome 144+, Firefox 139+, Edge 144+, and **Node.js 26+**. This library uses native Temporal when available and falls back to a polyfill for Safari, older browsers, and test environments.
 
 Replace `Date`, Moment.js, and most `date-fns` use cases with immutable, time-zone-aware Temporal types — wrapped in idiomatic React hooks.
 
 📖 **[Full documentation](./docs/README.md)** — getting started, API reference, polyfill guide, and TypeScript types.
+
+🤖 **[Agent guide (OKF v0.2)](./AGENTS.md)** — machine-readable knowledge in [`knowledge/`](./knowledge/index.md).
 
 ---
 
@@ -22,7 +24,7 @@ Replace `Date`, Moment.js, and most `date-fns` use cases with immutable, time-zo
 | Arithmetic | Millisecond hacks | `add`, `subtract`, `until`, `since` |
 | Parsing | Implementation-defined | Strict ISO 8601 |
 | Browser support | Everywhere | Chrome 144+, Firefox 139+, Edge 144+ |
-| Node.js | 22+ (dev) | Use a polyfill in production (native behind flag in v24) |
+| Node.js | Legacy APIs | **26+** native Temporal (polyfill optional) |
 
 ---
 
@@ -32,7 +34,7 @@ Replace `Date`, Moment.js, and most `date-fns` use cases with immutable, time-zo
 npm install react-temporal
 ```
 
-### Polyfill (recommended for SSR, Node.js, and Safari)
+### Polyfill (Safari, older browsers, Node &lt; 26)
 
 Native Temporal is used automatically when available. For environments without it, install one polyfill:
 
@@ -50,7 +52,7 @@ For `temporal-polyfill`, add this once at your app entry point:
 import 'temporal-polyfill/global';
 ```
 
-`@js-temporal/polyfill` is installed automatically as an optional dependency and used as the fallback when native Temporal is unavailable.
+`temporal-polyfill` is installed automatically as an optional dependency and used as the fallback when native Temporal is unavailable (`@js-temporal/polyfill` remains supported as an optional peer if you install it yourself).
 
 ---
 
@@ -109,6 +111,15 @@ const local = useTemporalNow({ timeZone: 'Europe/Madrid', intervalMs: 5000 });
 | `useTemporalWeek` | All dates in the ISO week (Mon–Sun) |
 | `useTemporalMonth` | All dates in a month |
 | `useTemporalYear` | First day of each month in a year |
+| `useTemporalFrom` | Parse ISO strings into any Temporal type |
+| `useTemporalSafeParse` | Non-throwing parse (`{ value, error }`) |
+| `useTemporalElapsed` | Seconds since an instant (live) |
+| `useTemporalStopwatch` | Live `{ elapsed, seconds }` from a start instant |
+| `useTemporalLocalDate` | Today's `PlainDate` in a time zone |
+| `useTemporalCompare` | Memoized `Temporal.*.compare` |
+| `useTemporalWithin` | Inclusive range check for instants or dates |
+| `useTemporalAdd` | Memoized `.add(duration)` |
+| `useTemporalCountdownStatus` | `{ seconds, isComplete }` countdown |
 
 See [`examples/`](examples/README.md) for copy-paste examples, or the [`docs/`](docs/README.md) folder for full documentation.
 
@@ -120,12 +131,13 @@ See [`examples/`](examples/README.md) for copy-paste examples, or the [`docs/`](
 | --- | --- |
 | `Temporal` | The Temporal namespace (native or polyfill) |
 | `getTemporal()` | Explicit resolver — native first, polyfill fallback |
+| `hasNativeTemporal()` | Whether `globalThis.Temporal` is available |
 
 ---
 
 ## TypeScript
 
-Full type exports are included. Types are sourced from `@js-temporal/polyfill` and work with native Temporal at runtime:
+Full type exports are included. Types are sourced from `temporal-polyfill` and work with native Temporal at runtime:
 
 ```ts
 import type { TemporalInstant, TemporalPlainDate, UseTemporalNowOptions } from 'react-temporal';
@@ -139,7 +151,7 @@ import type { TemporalInstant, TemporalPlainDate, UseTemporalNowOptions } from '
 npm test
 ```
 
-All hooks have unit tests in [`src/__tests__/`](src/__tests__/).
+Unit tests use **Vitest** and live in [`src/__tests__/`](src/__tests__/).
 
 ---
 
@@ -148,7 +160,7 @@ All hooks have unit tests in [`src/__tests__/`](src/__tests__/).
 ```bash
 git clone https://github.com/charlite/react-temporal.git
 cd react-temporal
-nvm use 22   # requires Node.js 22+
+nvm use 26   # requires Node.js 26+
 npm install
 npm test
 npm run build
@@ -158,7 +170,7 @@ npm run build
 
 ## Contributing
 
-Contributions are welcome! Please open issues or submit pull requests.
+Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) and the [OKF knowledge bundle](./knowledge/index.md) for agent-oriented context.
 
 ---
 

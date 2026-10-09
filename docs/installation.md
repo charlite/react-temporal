@@ -39,8 +39,8 @@ For environments without native Temporal, install **one** of:
 
 | Package | Size (gzip) | Notes |
 | --- | --- | --- |
-| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended for production |
-| [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) | ~44 KB | Official reference implementation; installed automatically as an optional dependency |
+| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended; installed automatically with `react-temporal` |
+| [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) | ~44 KB | Official reference implementation (install manually if needed) |
 
 ```bash
 npm install temporal-polyfill
@@ -50,7 +50,7 @@ npm install @js-temporal/polyfill
 
 ## Node.js version
 
-Development and CI for this package require **Node.js 22+**. Your end-user app can run on any Node version supported by your framework, as long as a Temporal polyfill is available when native Temporal is missing.
+Development and CI for this package require **Node.js 26+**. Your end-user app can run on older Node versions if you install a Temporal polyfill when native Temporal is missing.
 
 ## Package exports
 
@@ -70,7 +70,7 @@ Tree-shaking is supported (`"sideEffects": false`).
 
 ### Vite / CRA / Webpack
 
-No special configuration required. Install a polyfill for SSR or test environments running in Node.js.
+No special configuration required. Install a polyfill for SSR or test environments running in Node.js without native Temporal.
 
 ### Next.js
 
@@ -82,13 +82,6 @@ import 'temporal-polyfill/global';
 
 Client components can use hooks normally.
 
-### Jest / Vitest
+### Vitest
 
-Ensure the test environment loads a polyfill before tests run:
-
-```ts
-// jest.setup.ts
-import 'temporal-polyfill/global';
-```
-
-Or mock `globalThis.Temporal` in individual test files.
+Ensure the test environment loads a polyfill before tests run (see root `vitest.setup.ts` in this repository).

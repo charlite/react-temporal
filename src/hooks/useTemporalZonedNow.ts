@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useCallback } from 'react';
 import { Temporal } from '../temporal';
+import { useTemporalTicker } from '../internal/useTemporalTicker';
 import type { UseTemporalClockOptions, TemporalZonedDateTime } from '../types';
 
 /**
@@ -10,16 +11,13 @@ export function useTemporalZonedNow(
     timeZone: string,
     options?: UseTemporalClockOptions,
 ): TemporalZonedDateTime {
-    const { intervalMs = 1000 } = options ?? {};
-    const [now, setNow] = useState(() => Temporal.Now.zonedDateTimeISO(timeZone));
+    const { intervalMs = 1000, pauseWhenHidden = false } = options ?? {};
 
-    useEffect(() => {
-        const interval = setInterval(
-            () => setNow(Temporal.Now.zonedDateTimeISO(timeZone)),
-            intervalMs,
-        );
-        return () => clearInterval(interval);
-    }, [timeZone, intervalMs]);
+    const getNow = useCallback(() => Temporal.Now.zonedDateTimeISO(timeZone), [timeZone]);
 
-    return now;
+    return useTemporalTicker({
+        intervalMs,
+        pauseWhenHidden,
+        getSnapshot: getNow,
+    });
 }

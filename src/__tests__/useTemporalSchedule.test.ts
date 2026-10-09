@@ -4,12 +4,12 @@ import { Temporal } from '../temporal';
 
 describe('useTemporalSchedule', () => {
     it('schedules a callback at a specific instant', () => {
-        jest.useFakeTimers();
-        const callback = jest.fn();
+        vi.useFakeTimers();
+        const callback = vi.fn();
         const instant = Temporal.Now.instant().add({ seconds: 1 });
         renderHook(() => useTemporalSchedule(callback, instant));
-        jest.advanceTimersByTime(1000);
+        vi.advanceTimersByTime(1000);
         expect(callback).toHaveBeenCalled();
-        jest.useRealTimers();
+        vi.useRealTimers();
     });
 });

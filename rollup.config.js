@@ -18,8 +18,8 @@ export default {
   external: [
     'react',
     'react-dom',
-    '@js-temporal/polyfill',
     'temporal-polyfill',
+    '@js-temporal/polyfill',
   ],
   plugins: [
     typescript({

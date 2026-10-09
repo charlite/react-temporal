@@ -1,20 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { Temporal } from '../temporal';
-import type { TemporalInstant } from '../types';
+import { useLatest } from '../internal/useLatest';
+import { useTemporalTicker } from '../internal/useTemporalTicker';
+import type { TemporalInstant, UseTemporalCountdownOptions } from '../types';
 
 /**
  * Returns the remaining seconds until a target Temporal.Instant.
  */
-export function useTemporalCountdown(target: TemporalInstant) {
-    const getRemaining = () =>
-        Math.max(0, Math.floor(Temporal.Now.instant().until(target).total('seconds')));
+export function useTemporalCountdown(
+    target: TemporalInstant,
+    options?: UseTemporalCountdownOptions,
+): number {
+    const { intervalMs = 1000, onComplete } = options ?? {};
+    const completedRef = useRef(false);
+    const onCompleteRef = useLatest(onComplete ?? (() => {}));
 
-    const [remaining, setRemaining] = useState(getRemaining);
+    const getRemaining = useCallback(
+        () =>
+            Math.max(
+                0,
+                Math.floor(Temporal.Now.instant().until(target).total('seconds')),
+            ),
+        [target],
+    );
+
+    const remaining = useTemporalTicker({
+        intervalMs,
+        getSnapshot: getRemaining,
+    });
 
     useEffect(() => {
-        const interval = setInterval(() => setRemaining(getRemaining()), 1000);
-        return () => clearInterval(interval);
+        completedRef.current = false;
     }, [target]);
+
+    useEffect(() => {
+        if (remaining === 0 && !completedRef.current) {
+            completedRef.current = true;
+            onCompleteRef.current();
+        }
+    }, [remaining, onCompleteRef]);
 
     return remaining;
 }
