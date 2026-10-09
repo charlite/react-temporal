@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTemporalInterval } from 'react-temporal';
+import { useTemporalInterval } from '@charlite/react-temporal';
 
 export function IntervalExample() {
   const [count, setCount] = useState(0);

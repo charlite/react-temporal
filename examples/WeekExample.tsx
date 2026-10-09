@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalWeek, Temporal } from 'react-temporal';
+import { useTemporalWeek, Temporal } from '@charlite/react-temporal';
 
 export function WeekExample() {
   const date = Temporal.PlainDate.from('2025-07-21');

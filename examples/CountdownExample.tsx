@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalCountdown, Temporal } from 'react-temporal';
+import { useTemporalCountdown, Temporal } from '@charlite/react-temporal';
 
 export function CountdownExample() {
   const target = Temporal.Instant.from('2025-08-01T00:00:00Z');

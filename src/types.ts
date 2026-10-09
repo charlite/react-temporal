@@ -1,6 +1,6 @@
 import type { Temporal } from 'temporal-polyfill';
 
-/** Temporal namespace types (for annotations). Value access via `import { Temporal } from 'react-temporal'`. */
+/** Temporal namespace types (for annotations). Value access via `import { Temporal } from '@charlite/react-temporal'`. */
 export type TemporalTypes = typeof Temporal;
 
 export type TemporalInstant = Temporal.Instant;

@@ -41,14 +41,13 @@ jobs:
           npm init -y
           echo '{"type": "commonjs"}' > package.json
           npm install $GITHUB_WORKSPACE
-
-          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-          echo "📦 Testing CommonJS import for package: $REPO_NAME"
+          export PKG_NAME=$(node -p "require('$GITHUB_WORKSPACE/package.json').name")
+          echo "📦 Testing CommonJS import for package: $PKG_NAME"
 
           node -e "
-            const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
+            const pkgName = process.env.PKG_NAME;
             try {
-              const pkg = require(repoName);
+              const pkg = require(pkgName);
               console.log('✅ CommonJS import successful');
               console.log('Package exports:', Object.keys(pkg));
             } catch (error) {
@@ -63,13 +62,12 @@ jobs:
           npm init -y
           echo '{"type": "module"}' > package.json
           npm install $GITHUB_WORKSPACE
-
-          REPO_NAME=$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)
-          echo "📦 Testing ES Module import for package: $REPO_NAME"
+          export PKG_NAME=$(node -p "require('$GITHUB_WORKSPACE/package.json').name")
+          echo "📦 Testing ES Module import for package: $PKG_NAME"
 
           node -e "
-            const repoName = process.env.GITHUB_REPOSITORY.split('/')[1];
-            import(repoName).then(pkg => {
+            const pkgName = process.env.PKG_NAME;
+            import(pkgName).then(pkg => {
               console.log('✅ ES Module import successful');
               console.log('Package exports:', Object.keys(pkg));
             }).catch(error => {

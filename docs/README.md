@@ -23,7 +23,7 @@ import {
   useTemporalZonedNow,
   useTemporalRelative,
   Temporal,
-} from 'react-temporal';
+} from '@charlite/react-temporal';
 
 function Dashboard() {
   const now = useTemporalNow();

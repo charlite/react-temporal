@@ -3,7 +3,7 @@
 Examples for every hook in **react-temporal**. Import `Temporal` from the package (re-exported from native or polyfill):
 
 ```tsx
-import { Temporal } from 'react-temporal';
+import { Temporal } from '@charlite/react-temporal';
 ```
 
 For apps without native Temporal (Node.js SSR, Safari), install a polyfill — see the [polyfill guide](../docs/polyfill.md).
@@ -13,7 +13,7 @@ For apps without native Temporal (Node.js SSR, Safari), install a polyfill — s
 ## Clock (`useTemporalNow`)
 
 ```tsx
-import { useTemporalNow } from 'react-temporal';
+import { useTemporalNow } from '@charlite/react-temporal';
 
 function ClockExample() {
   const now = useTemporalNow();
@@ -24,7 +24,7 @@ function ClockExample() {
 ## Live clock with options (`useTemporalClock` / `useTemporalNow`)
 
 ```tsx
-import { useTemporalClock, useTemporalNow } from 'react-temporal';
+import { useTemporalClock, useTemporalNow } from '@charlite/react-temporal';
 
 function LiveClock() {
   const fast = useTemporalClock({ intervalMs: 100 });
@@ -42,7 +42,7 @@ function LiveClock() {
 ## Zoned clock (`useTemporalZonedNow`)
 
 ```tsx
-import { useTemporalZonedNow } from 'react-temporal';
+import { useTemporalZonedNow } from '@charlite/react-temporal';
 
 function TokyoClock() {
   const tokyo = useTemporalZonedNow('Asia/Tokyo');
@@ -53,7 +53,7 @@ function TokyoClock() {
 ## Month (`useTemporalMonth`)
 
 ```tsx
-import { useTemporalMonth, Temporal } from 'react-temporal';
+import { useTemporalMonth, Temporal } from '@charlite/react-temporal';
 
 function MonthExample() {
   const dates = useTemporalMonth(Temporal.PlainDate.from('2026-07-01'));
@@ -70,7 +70,7 @@ function MonthExample() {
 ## Countdown (`useTemporalCountdown`)
 
 ```tsx
-import { useTemporalCountdown, Temporal } from 'react-temporal';
+import { useTemporalCountdown, Temporal } from '@charlite/react-temporal';
 
 function CountdownExample() {
   const target = Temporal.Instant.from('2026-12-31T23:59:59Z');
@@ -82,7 +82,7 @@ function CountdownExample() {
 ## Calendar (`useTemporalCalendar`)
 
 ```tsx
-import { useTemporalCalendar } from 'react-temporal';
+import { useTemporalCalendar } from '@charlite/react-temporal';
 
 function CalendarExample() {
   const calendarId = useTemporalCalendar('iso8601');
@@ -93,7 +93,7 @@ function CalendarExample() {
 ## Diff (`useTemporalDiff`)
 
 ```tsx
-import { useTemporalDiff, Temporal } from 'react-temporal';
+import { useTemporalDiff, Temporal } from '@charlite/react-temporal';
 
 function DiffExample() {
   const a = Temporal.Instant.from('2026-07-21T00:00:00Z');
@@ -106,7 +106,7 @@ function DiffExample() {
 ## Duration (`useTemporalDuration`)
 
 ```tsx
-import { useTemporalDuration, Temporal } from 'react-temporal';
+import { useTemporalDuration, Temporal } from '@charlite/react-temporal';
 
 function DurationExample() {
   const start = Temporal.Instant.from('2026-07-21T00:00:00Z');
@@ -119,7 +119,7 @@ function DurationExample() {
 ## Format (`useTemporalFormat`)
 
 ```tsx
-import { useTemporalFormat, Temporal } from 'react-temporal';
+import { useTemporalFormat, Temporal } from '@charlite/react-temporal';
 
 function FormatExample() {
   const date = Temporal.PlainDateTime.from('2026-07-21T12:34:56');
@@ -134,7 +134,7 @@ function FormatExample() {
 ## Interval (`useTemporalInterval`)
 
 ```tsx
-import { useTemporalInterval } from 'react-temporal';
+import { useTemporalInterval } from '@charlite/react-temporal';
 import { useState } from 'react';
 
 function IntervalExample() {
@@ -147,7 +147,7 @@ function IntervalExample() {
 ## Parse (`useTemporalParse`)
 
 ```tsx
-import { useTemporalParse } from 'react-temporal';
+import { useTemporalParse } from '@charlite/react-temporal';
 
 function ParseExample() {
   const instant = useTemporalParse('2026-07-21T00:00:00Z');
@@ -158,7 +158,7 @@ function ParseExample() {
 ## Range (`useTemporalRange`)
 
 ```tsx
-import { useTemporalRange, Temporal } from 'react-temporal';
+import { useTemporalRange, Temporal } from '@charlite/react-temporal';
 
 function RangeExample() {
   const start = Temporal.PlainDate.from('2026-07-01');
@@ -177,7 +177,7 @@ function RangeExample() {
 ## Relative (`useTemporalRelative`)
 
 ```tsx
-import { useTemporalRelative, Temporal } from 'react-temporal';
+import { useTemporalRelative, Temporal } from '@charlite/react-temporal';
 
 function RelativeExample() {
   const from = Temporal.Instant.from('2026-07-21T00:00:00Z');
@@ -190,7 +190,7 @@ function RelativeExample() {
 ## Schedule (`useTemporalSchedule`)
 
 ```tsx
-import { useTemporalSchedule, Temporal } from 'react-temporal';
+import { useTemporalSchedule, Temporal } from '@charlite/react-temporal';
 import { useState } from 'react';
 
 function ScheduleExample() {
@@ -204,7 +204,7 @@ function ScheduleExample() {
 ## Time zone (`useTemporalTimeZone`)
 
 ```tsx
-import { useTemporalTimeZone } from 'react-temporal';
+import { useTemporalTimeZone } from '@charlite/react-temporal';
 
 function TimeZoneExample() {
   const tz = useTemporalTimeZone('UTC');
@@ -215,7 +215,7 @@ function TimeZoneExample() {
 ## Week (`useTemporalWeek`)
 
 ```tsx
-import { useTemporalWeek, Temporal } from 'react-temporal';
+import { useTemporalWeek, Temporal } from '@charlite/react-temporal';
 
 function WeekExample() {
   const date = Temporal.PlainDate.from('2026-07-21');
@@ -233,7 +233,7 @@ function WeekExample() {
 ## Year (`useTemporalYear`)
 
 ```tsx
-import { useTemporalYear, Temporal } from 'react-temporal';
+import { useTemporalYear, Temporal } from '@charlite/react-temporal';
 
 function YearExample() {
   const date = Temporal.PlainDate.from('2026-07-21');
@@ -250,4 +250,4 @@ function YearExample() {
 
 ---
 
-All hooks are named exports from `react-temporal`. See the [API reference](../docs/api-reference.md) and [main README](../README.md).
+All hooks are named exports from `@charlite/react-temporal`. See the [API reference](../docs/api-reference.md) and [main README](../README.md).

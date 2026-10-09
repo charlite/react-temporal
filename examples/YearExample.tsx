@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalYear, Temporal } from 'react-temporal';
+import { useTemporalYear, Temporal } from '@charlite/react-temporal';
 
 export function YearExample() {
   const date = Temporal.PlainDate.from('2025-07-21');

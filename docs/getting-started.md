@@ -11,7 +11,7 @@ This guide walks you through installing **react-temporal** and using it in a Rea
 ## 1. Install the package
 
 ```bash
-npm install react-temporal
+npm install @charlite/react-temporal
 ```
 
 ## 2. Add a polyfill (if needed)
@@ -40,7 +40,7 @@ See the [Polyfill guide](./polyfill.md) for details.
 ## 3. Use a hook
 
 ```tsx
-import { useTemporalNow } from 'react-temporal';
+import { useTemporalNow } from '@charlite/react-temporal';
 
 export function Clock() {
   const now = useTemporalNow();
@@ -53,7 +53,7 @@ export function Clock() {
 You do not need a separate polyfill import for types or values — the package re-exports `Temporal`:
 
 ```tsx
-import { Temporal, useTemporalMonth } from 'react-temporal';
+import { Temporal, useTemporalMonth } from '@charlite/react-temporal';
 
 export function JulyCalendar() {
   const dates = useTemporalMonth(Temporal.PlainDate.from('2026-07-01'));
@@ -73,7 +73,7 @@ export function JulyCalendar() {
 ### Live clock with time zone
 
 ```tsx
-import { useTemporalZonedNow } from 'react-temporal';
+import { useTemporalZonedNow } from '@charlite/react-temporal';
 
 export function LocalClock({ timeZone }: { timeZone: string }) {
   const now = useTemporalZonedNow(timeZone, { intervalMs: 1000 });
@@ -84,7 +84,7 @@ export function LocalClock({ timeZone }: { timeZone: string }) {
 ### Countdown timer
 
 ```tsx
-import { useTemporalCountdown, Temporal } from 'react-temporal';
+import { useTemporalCountdown, Temporal } from '@charlite/react-temporal';
 
 export function Countdown({ iso }: { iso: string }) {
   const target = Temporal.Instant.from(iso);
@@ -96,7 +96,7 @@ export function Countdown({ iso }: { iso: string }) {
 ### Relative time label
 
 ```tsx
-import { useTemporalRelative, Temporal } from 'react-temporal';
+import { useTemporalRelative, Temporal } from '@charlite/react-temporal';
 
 export function RelativeLabel({ instant }: { instant: Temporal.Instant }) {
   const label = useTemporalRelative(Temporal.Now.instant(), instant, 'en');

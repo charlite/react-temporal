@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalMonth, Temporal } from 'react-temporal';
+import { useTemporalMonth, Temporal } from '@charlite/react-temporal';
 
 export function MonthExample() {
   const dates = useTemporalMonth(Temporal.PlainDate.from('2025-07-01'));
