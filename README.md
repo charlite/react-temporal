@@ -1,6 +1,6 @@
 # react-temporal
 
-[![npm version](https://badge.fury.io/js/react-temporal.svg)](https://www.npmjs.com/package/@xarlizard/react-temporal)
+[![npm version](https://badge.fury.io/js/@charlite/react-temporal.svg)](https://www.npmjs.com/package/@charlite/react-temporal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![CI](https://github.com/charlite/react-temporal/actions/workflows/ci.yml/badge.svg)](https://github.com/charlite/react-temporal/actions/workflows/ci.yml)
@@ -31,7 +31,7 @@ Replace `Date`, Moment.js, and most `date-fns` use cases with immutable, time-zo
 ## Install
 
 ```bash
-npm install react-temporal
+npm install @charlite/react-temporal
 ```
 
 ### Polyfill (Safari, older browsers, Node &lt; 26)
@@ -61,7 +61,7 @@ import 'temporal-polyfill/global';
 All hooks are named exports. Import `Temporal` from the package or from your polyfill:
 
 ```tsx
-import { useTemporalNow, useTemporalZonedNow, Temporal } from 'react-temporal';
+import { useTemporalNow, useTemporalZonedNow, Temporal } from '@charlite/react-temporal';
 
 function Clock() {
   const now = useTemporalNow();
@@ -79,7 +79,7 @@ function Clock() {
 ### Configurable clock
 
 ```tsx
-import { useTemporalNow, useTemporalClock } from 'react-temporal';
+import { useTemporalNow, useTemporalClock } from '@charlite/react-temporal';
 
 // Update every 100 ms for a smooth timer UI
 const now = useTemporalClock({ intervalMs: 100 });
@@ -140,7 +140,7 @@ See [`examples/`](examples/README.md) for copy-paste examples, or the [`docs/`](
 Full type exports are included. Types are sourced from `temporal-polyfill` and work with native Temporal at runtime:
 
 ```ts
-import type { TemporalInstant, TemporalPlainDate, UseTemporalNowOptions } from 'react-temporal';
+import type { TemporalInstant, TemporalPlainDate, UseTemporalNowOptions } from '@charlite/react-temporal';
 ```
 
 ---

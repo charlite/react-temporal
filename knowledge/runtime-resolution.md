@@ -24,7 +24,7 @@ Implementation: [`../src/temporal.ts`](../src/temporal.ts).
 | Size (gzip) | ~20 KB | ~50 KB |
 | Spec | 2026 | Older reference snapshot |
 
-Apps may still install `@js-temporal/polyfill` as an optional peer for their own imports; **react-temporal does not auto-load it**.
+Apps may still install `@js-temporal/polyfill` as an optional peer for their own imports; **@charlite/react-temporal does not auto-load it**.
 
 ## When consumers need a polyfill
 
@@ -35,4 +35,4 @@ Apps may still install `@js-temporal/polyfill` as an optional peer for their own
 | Node.js &lt; 26 | Polyfill at process entry |
 | Vitest + jsdom | Handled inside the library via `temporal-polyfill` import |
 
-Rollup **externalizes** polyfill packages so they are not bundled into `react-temporal`.
+Rollup **externalizes** polyfill packages so they are not bundled into `@charlite/react-temporal`.

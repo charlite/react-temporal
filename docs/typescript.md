@@ -15,14 +15,14 @@ import type {
   UseTemporalNowOptions,
   UseTemporalClockOptions,
   TemporalNamespace,
-} from 'react-temporal';
+} from '@charlite/react-temporal';
 ```
 
 ## Importing values and types together
 
 ```ts
-import { Temporal, useTemporalNow } from 'react-temporal';
-import type { TemporalInstant } from 'react-temporal';
+import { Temporal, useTemporalNow } from '@charlite/react-temporal';
+import type { TemporalInstant } from '@charlite/react-temporal';
 
 function logInstant(instant: TemporalInstant) {
   console.log(instant.toString());
@@ -53,7 +53,7 @@ function logInstant(instant: TemporalInstant) {
 ## Typing component props
 
 ```tsx
-import type { TemporalInstant, TemporalPlainDate } from 'react-temporal';
+import type { TemporalInstant, TemporalPlainDate } from '@charlite/react-temporal';
 
 interface EventCardProps {
   startsAt: TemporalInstant;
@@ -70,7 +70,7 @@ export function EventCard({ startsAt, date }: EventCardProps) {
 Use this when you need the type of the full `Temporal` namespace:
 
 ```ts
-import type { TemporalNamespace } from 'react-temporal';
+import type { TemporalNamespace } from '@charlite/react-temporal';
 
 function useTemporalSafe(): TemporalNamespace {
   return getTemporal();

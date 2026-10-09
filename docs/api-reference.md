@@ -1,6 +1,6 @@
 # API reference
 
-All exports from `react-temporal`.
+All exports from `@charlite/react-temporal`.
 
 ## Utilities
 
@@ -9,7 +9,7 @@ All exports from `react-temporal`.
 Re-exported Temporal namespace (native or polyfill).
 
 ```ts
-import { Temporal } from 'react-temporal';
+import { Temporal } from '@charlite/react-temporal';
 
 const date = Temporal.PlainDate.from('2026-07-05');
 const now = Temporal.Now.instant();
@@ -20,7 +20,7 @@ const now = Temporal.Now.instant();
 Returns the resolved Temporal namespace. Prefer using `Temporal` directly.
 
 ```ts
-import { getTemporal } from 'react-temporal';
+import { getTemporal } from '@charlite/react-temporal';
 
 const T = getTemporal();
 ```

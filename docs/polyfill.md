@@ -5,7 +5,7 @@
 ## How runtime resolution works
 
 ```ts
-import { getTemporal, Temporal } from 'react-temporal';
+import { getTemporal, Temporal } from '@charlite/react-temporal';
 
 // getTemporal() checks globalThis.Temporal first, then falls back to temporal-polyfill
 const T = getTemporal();
@@ -56,7 +56,7 @@ import 'temporal-polyfill/global';
 
 - Official reference implementation from Temporal proposal champions
 - Larger (~44 KB gzip)
-- Installed automatically as an optional dependency of `react-temporal`
+- Installed automatically as an optional dependency of `@charlite/react-temporal`
 
 No global import is required — the package loads it when native Temporal is missing.
 
@@ -74,10 +74,10 @@ In **Vitest** with `jsdom`, native Temporal is typically unavailable. This libra
 
 **Do I need to import Temporal separately?**
 
-No. Import `Temporal` from `react-temporal`:
+No. Import `Temporal` from `@charlite/react-temporal`:
 
 ```ts
-import { Temporal } from 'react-temporal';
+import { Temporal } from '@charlite/react-temporal';
 ```
 
 **Can I use only native Temporal and skip the polyfill?**

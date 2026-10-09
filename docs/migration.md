@@ -4,7 +4,7 @@
 
 ### Polyfill default
 
-The built-in fallback is now **`temporal-polyfill`** instead of `@js-temporal/polyfill`. No app changes are required unless you relied on `@js-temporal/polyfill` being installed automatically — add it explicitly if you still need it for non-`react-temporal` code paths.
+The built-in fallback is now **`temporal-polyfill`** instead of `@js-temporal/polyfill`. No app changes are required unless you relied on `@js-temporal/polyfill` being installed automatically — add it explicitly if you still need it for code outside `@charlite/react-temporal`.
 
 ### New hooks (optional)
 
@@ -31,7 +31,7 @@ nvm install 26
 nvm use 26
 ```
 
-Update GitHub Actions / CI images to Node 26. End-user apps on older Node versions can still use **react-temporal** with a Temporal polyfill.
+Update GitHub Actions / CI images to Node 26. End-user apps on older Node versions can still use **@charlite/react-temporal** with a Temporal polyfill.
 
 ### Testing (contributors)
 
@@ -73,7 +73,7 @@ Version **0.0.3** modernizes the library for 2026 Temporal adoption. Most change
 **Before (0.0.2):**
 
 ```bash
-npm install react-temporal
+npm install @charlite/react-temporal
 # react and react-dom were bundled as direct dependencies
 # polyfill was bundled inside the package
 ```
@@ -81,7 +81,7 @@ npm install react-temporal
 **After (0.0.3):**
 
 ```bash
-npm install react-temporal
+npm install @charlite/react-temporal
 npm install temporal-polyfill   # recommended for SSR / Safari / Node
 ```
 
@@ -92,9 +92,9 @@ Ensure `react` and `react-dom` are in your app's `package.json` (peer dependenci
 You can now import `Temporal` from the package instead of `@js-temporal/polyfill`:
 
 ```diff
-- import { useTemporalMonth } from 'react-temporal';
+- import { useTemporalMonth } from '@charlite/react-temporal';
 - import { Temporal } from '@js-temporal/polyfill';
-+ import { useTemporalMonth, Temporal } from 'react-temporal';
++ import { useTemporalMonth, Temporal } from '@charlite/react-temporal';
 ```
 
 ### `useTemporalFormat`

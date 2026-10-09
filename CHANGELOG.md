@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-10-09
+
+### Changed
+
+- npm package name and documentation updated from `@xarlizard/react-temporal` to **`@charlite/react-temporal`**.
+- CI package install smoke tests use the scoped name from `package.json`.
+
+### Fixed
+
+- `hasNativeTemporal` test no longer assumes native Temporal is absent (passes on Node.js 26+ with built-in Temporal).
+
 ## [1.1.0] - 2026-10-08
 
 ### Added
@@ -87,6 +98,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation and usage instructions in `README.md`.
 - Semantic versioning and changelog support.
 
+[1.1.1]: https://github.com/charlite/react-temporal/compare/v1.1.0...v1.1.1
 [1.1.0]: https://github.com/charlite/react-temporal/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/charlite/react-temporal/compare/v0.0.3...v1.0.0
 [0.0.3]: https://github.com/charlite/react-temporal/compare/v0.0.2...v0.0.3

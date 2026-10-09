@@ -2,14 +2,14 @@
 type: Reference
 title: react-temporal package
 description: React hooks library built on the JavaScript Temporal API.
-resource: https://www.npmjs.com/package/react-temporal
+resource: https://www.npmjs.com/package/@charlite/react-temporal
 tags: [react, temporal, hooks, npm]
 status: stable
 ---
 
 # react-temporal
 
-Published as **`react-temporal`** on npm. The package exposes:
+Published as **`@charlite/react-temporal`** on npm. The package exposes:
 
 - **Hooks** — `useTemporalNow`, `useTemporalClock`, `useTemporalZonedNow`, and related utilities (see [Hook catalog](./hooks.md)).
 - **`Temporal`** — namespace resolved at runtime via [`getTemporal()`](./runtime-resolution.md).

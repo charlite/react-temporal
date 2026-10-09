@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalRange, Temporal } from 'react-temporal';
+import { useTemporalRange, Temporal } from '@charlite/react-temporal';
 
 export function RangeExample() {
   const start = Temporal.PlainDate.from('2025-07-01');

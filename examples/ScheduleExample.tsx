@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTemporalSchedule, Temporal } from 'react-temporal';
+import { useTemporalSchedule, Temporal } from '@charlite/react-temporal';
 
 export function ScheduleExample() {
   const [triggered, setTriggered] = useState(false);

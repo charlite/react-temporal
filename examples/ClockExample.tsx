@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalNow } from 'react-temporal';
+import { useTemporalNow } from '@charlite/react-temporal';
 
 export function ClockExample() {
   const now = useTemporalNow();

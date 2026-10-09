@@ -3,24 +3,24 @@
 ## npm
 
 ```bash
-npm install react-temporal
+npm install @charlite/react-temporal
 ```
 
 ## yarn
 
 ```bash
-yarn add react-temporal
+yarn add @charlite/react-temporal
 ```
 
 ## pnpm
 
 ```bash
-pnpm add react-temporal
+pnpm add @charlite/react-temporal
 ```
 
 ## Peer dependencies
 
-`react-temporal` expects React to already be installed in your project:
+`@charlite/react-temporal` expects React to already be installed in your project:
 
 | Package | Supported versions |
 | --- | --- |
@@ -39,7 +39,7 @@ For environments without native Temporal, install **one** of:
 
 | Package | Size (gzip) | Notes |
 | --- | --- | --- |
-| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended; installed automatically with `react-temporal` |
+| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended; installed automatically with `@charlite/react-temporal` |
 | [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) | ~44 KB | Official reference implementation (install manually if needed) |
 
 ```bash

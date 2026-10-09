@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTemporalCalendar } from 'react-temporal';
+import { useTemporalCalendar } from '@charlite/react-temporal';
 
 export function CalendarExample() {
   const calendar = useTemporalCalendar('iso8601');
