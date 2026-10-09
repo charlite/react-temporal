@@ -28,7 +28,7 @@ This repository ships machine-readable project knowledge as an [Open Knowledge F
 
 ## Temporal runtime
 
-Hooks call `getTemporal()` which prefers `globalThis.Temporal` (browsers, Node.js 26+) and falls back to `@js-temporal/polyfill`. See [`knowledge/runtime-resolution.md`](./knowledge/runtime-resolution.md).
+Hooks call `getTemporal()` which prefers `globalThis.Temporal` (browsers, Node.js 26+) and falls back to `temporal-polyfill`. See [`knowledge/runtime-resolution.md`](./knowledge/runtime-resolution.md).
 
 ## Conventions
 

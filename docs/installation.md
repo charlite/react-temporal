@@ -39,8 +39,8 @@ For environments without native Temporal, install **one** of:
 
 | Package | Size (gzip) | Notes |
 | --- | --- | --- |
-| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended for production |
-| [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) | ~44 KB | Official reference implementation; installed automatically as an optional dependency |
+| [`temporal-polyfill`](https://www.npmjs.com/package/temporal-polyfill) | ~20 KB | Recommended; installed automatically with `react-temporal` |
+| [`@js-temporal/polyfill`](https://www.npmjs.com/package/@js-temporal/polyfill) | ~44 KB | Official reference implementation (install manually if needed) |
 
 ```bash
 npm install temporal-polyfill

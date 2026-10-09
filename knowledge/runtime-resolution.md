@@ -11,24 +11,28 @@ Implementation: [`../src/temporal.ts`](../src/temporal.ts).
 
 ## Resolution order
 
-1. **`globalThis.Temporal`** when the host provides a conforming implementation (modern browsers; **Node.js 26+** when enabled in the runtime).
-2. **`@js-temporal/polyfill`** when native Temporal is missing (optional dependency, loaded as the synchronous fallback).
+1. **`globalThis.Temporal`** when the host provides a conforming implementation (modern browsers; **Node.js 26+** when enabled).
+2. **`temporal-polyfill`** when native Temporal is missing (default optional dependency — smaller bundle, 2026 spec alignment).
 
-`getTemporal()` performs this check. The exported `Temporal` constant is initialized once at module load using the same logic.
+`hasNativeTemporal()` exposes whether step 1 is active. `getTemporal()` and the exported `Temporal` constant use the same resolution.
+
+## Why not `@js-temporal/polyfill` by default?
+
+| | `temporal-polyfill` | `@js-temporal/polyfill` |
+| --- | --- | --- |
+| Maintenance | Active (FullCalendar) | Slower release cadence |
+| Size (gzip) | ~20 KB | ~50 KB |
+| Spec | 2026 | Older reference snapshot |
+
+Apps may still install `@js-temporal/polyfill` as an optional peer for their own imports; **react-temporal does not auto-load it**.
 
 ## When consumers need a polyfill
 
 | Environment | Typical need |
 | --- | --- |
 | Chrome / Firefox / Edge (current) | Usually none |
-| Safari | Often needs `temporal-polyfill` or `@js-temporal/polyfill` |
+| Safari | Often needs a polyfill |
 | Node.js &lt; 26 | Polyfill at process entry |
-| Node.js 26+ | Native when available; polyfill for older patch releases or test environments (jsdom) |
-| Jest / Vitest + jsdom | Load a polyfill in test setup (see `vitest.setup.ts`) |
+| Vitest + jsdom | Handled inside the library via `temporal-polyfill` import |
 
-## Recommended polyfills
-
-- **`temporal-polyfill`** — smaller production bundle; `import 'temporal-polyfill/global'`.
-- **`@js-temporal/polyfill`** — reference implementation; used automatically by this package when native is absent.
-
-Rollup **externalizes** both polyfill packages so they are not bundled into `react-temporal`.
+Rollup **externalizes** polyfill packages so they are not bundled into `react-temporal`.

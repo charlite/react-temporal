@@ -25,6 +25,24 @@ import { getTemporal } from 'react-temporal';
 const T = getTemporal();
 ```
 
+### `hasNativeTemporal()`
+
+Returns `true` when `globalThis.Temporal` is defined.
+
+---
+
+## Parsing
+
+### `useTemporalFrom(kind, input)`
+
+Parses an ISO string into the requested Temporal type.
+
+**Kinds:** `'instant' | 'plainDate' | 'plainTime' | 'plainDateTime' | 'zonedDateTime'`
+
+### `useTemporalSafeParse(kind, input)`
+
+Same as `useTemporalFrom`, but returns `{ value, error }` instead of throwing.
+
 ---
 
 ## Clock hooks
@@ -37,6 +55,7 @@ Returns the current time, updating at a configurable interval.
 | --- | --- | --- | --- |
 | `intervalMs` | `number` | `1000` | Tick interval in milliseconds |
 | `timeZone` | `string` | — | IANA time zone; when set, returns `ZonedDateTime` |
+| `pauseWhenHidden` | `boolean` | `false` | Skip ticks while the document is hidden |
 
 **Returns:** `Temporal.Instant` or `Temporal.ZonedDateTime`
 
@@ -243,25 +262,54 @@ useTemporalInterval(() => refresh(), { seconds: 30 });
 
 ---
 
-### `useTemporalCountdown(target)`
+### `useTemporalCountdown(target, options?)`
 
-Seconds remaining until `target`. Updates every second. Returns `0` after the target passes.
+Seconds remaining until `target`. Returns `0` after the target passes.
 
-**Returns:** `number`
+| Option | Description |
+| --- | --- |
+| `intervalMs` | Tick interval (default `1000`) |
+| `onComplete` | Called once when countdown reaches zero |
 
-```tsx
-const seconds = useTemporalCountdown(Temporal.Instant.from('2026-12-31T23:59:59Z'));
-```
+### `useTemporalCountdownStatus(target, options?)`
+
+Same as countdown but returns `{ seconds, isComplete }`.
+
+### `useTemporalElapsed(since, options?)`
+
+Live seconds elapsed since `since` (0 if `since` is in the future).
+
+### `useTemporalStopwatch(start, options?)`
+
+Returns `{ elapsed: Duration, seconds }` updating from `start`.
+
+### `useTemporalLocalDate(timeZone, options?)`
+
+Today's `PlainDate` in the given IANA zone (default tick: 60s).
 
 ---
 
-### `useTemporalSchedule(callback, instant)`
+### `useTemporalSchedule(callback, instant, options?)`
 
-Schedules `callback` to run once at `instant` using `setTimeout`. No-op if `instant` is in the past.
+Schedules `callback` once at `instant`. Runs immediately when already past unless `runIfPast: false`.
 
 ```tsx
 useTemporalSchedule(() => alert('Done!'), Temporal.Now.instant().add({ minutes: 5 }));
 ```
+
+---
+
+### `useTemporalCompare(a, b)`
+
+Memoized `Temporal.Instant.compare` or `PlainDate.compare`.
+
+### `useTemporalWithin(value, start, end)`
+
+Inclusive range check (matching `Instant` or `PlainDate` operands).
+
+### `useTemporalAdd(value, duration)`
+
+Memoized `.add(duration)` for `Instant` or `PlainDate`.
 
 ---
 

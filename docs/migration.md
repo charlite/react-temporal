@@ -1,5 +1,21 @@
 # Migration guide
 
+## Upgrading to 1.1.0 from 1.0.0
+
+### Polyfill default
+
+The built-in fallback is now **`temporal-polyfill`** instead of `@js-temporal/polyfill`. No app changes are required unless you relied on `@js-temporal/polyfill` being installed automatically — add it explicitly if you still need it for non-`react-temporal` code paths.
+
+### New hooks (optional)
+
+See [API reference](./api-reference.md) for `useTemporalFrom`, `useTemporalElapsed`, `useTemporalStopwatch`, `useTemporalLocalDate`, and related utilities.
+
+### Schedule behavior
+
+`useTemporalSchedule` now invokes the callback immediately when the target instant is in the past (use `{ runIfPast: false }` to restore the old no-op behavior).
+
+---
+
 ## Upgrading to 1.0.0 from 0.0.3
 
 Version **1.0.0** aligns the repo with the 2026 Temporal ecosystem and modern tooling. Library APIs are unchanged; development and CI requirements changed.

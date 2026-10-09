@@ -52,7 +52,7 @@ For `temporal-polyfill`, add this once at your app entry point:
 import 'temporal-polyfill/global';
 ```
 
-`@js-temporal/polyfill` is installed automatically as an optional dependency and used as the fallback when native Temporal is unavailable.
+`temporal-polyfill` is installed automatically as an optional dependency and used as the fallback when native Temporal is unavailable (`@js-temporal/polyfill` remains supported as an optional peer if you install it yourself).
 
 ---
 
@@ -111,6 +111,15 @@ const local = useTemporalNow({ timeZone: 'Europe/Madrid', intervalMs: 5000 });
 | `useTemporalWeek` | All dates in the ISO week (Mon–Sun) |
 | `useTemporalMonth` | All dates in a month |
 | `useTemporalYear` | First day of each month in a year |
+| `useTemporalFrom` | Parse ISO strings into any Temporal type |
+| `useTemporalSafeParse` | Non-throwing parse (`{ value, error }`) |
+| `useTemporalElapsed` | Seconds since an instant (live) |
+| `useTemporalStopwatch` | Live `{ elapsed, seconds }` from a start instant |
+| `useTemporalLocalDate` | Today's `PlainDate` in a time zone |
+| `useTemporalCompare` | Memoized `Temporal.*.compare` |
+| `useTemporalWithin` | Inclusive range check for instants or dates |
+| `useTemporalAdd` | Memoized `.add(duration)` |
+| `useTemporalCountdownStatus` | `{ seconds, isComplete }` countdown |
 
 See [`examples/`](examples/README.md) for copy-paste examples, or the [`docs/`](docs/README.md) folder for full documentation.
 
@@ -122,12 +131,13 @@ See [`examples/`](examples/README.md) for copy-paste examples, or the [`docs/`](
 | --- | --- |
 | `Temporal` | The Temporal namespace (native or polyfill) |
 | `getTemporal()` | Explicit resolver — native first, polyfill fallback |
+| `hasNativeTemporal()` | Whether `globalThis.Temporal` is available |
 
 ---
 
 ## TypeScript
 
-Full type exports are included. Types are sourced from `@js-temporal/polyfill` and work with native Temporal at runtime:
+Full type exports are included. Types are sourced from `temporal-polyfill` and work with native Temporal at runtime:
 
 ```ts
 import type { TemporalInstant, TemporalPlainDate, UseTemporalNowOptions } from 'react-temporal';

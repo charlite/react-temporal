@@ -11,7 +11,7 @@ All hooks live under [`../src/hooks/`](../src/hooks/) and are re-exported from [
 
 | Hook | Returns / effect |
 | --- | --- |
-| `useTemporalNow` | Live `Instant` or `ZonedDateTime` (`timeZone` option) |
+| `useTemporalNow` | Live `Instant` or `ZonedDateTime` (`timeZone`, `pauseWhenHidden`) |
 | `useTemporalClock` | Live `Instant` with configurable `intervalMs` |
 | `useTemporalZonedNow` | Live `ZonedDateTime` for an IANA zone |
 | `useTemporalInterval` | Repeated callback on a `Duration` interval |
@@ -21,12 +21,21 @@ All hooks live under [`../src/hooks/`](../src/hooks/) and are re-exported from [
 | `useTemporalFormat` | Locale string via `toLocaleString` |
 | `useTemporalRange` | Inclusive `PlainDate[]` between bounds |
 | `useTemporalRelative` | `Intl.RelativeTimeFormat` label |
-| `useTemporalCountdown` | Seconds until target instant |
-| `useTemporalSchedule` | One-shot timeout at target instant |
+| `useTemporalCountdown` | Seconds remaining until target (`onComplete`, `intervalMs`) |
+| `useTemporalCountdownStatus` | `{ seconds, isComplete }` |
+| `useTemporalSchedule` | One-shot timeout at target instant (`runIfPast`) |
 | `useTemporalParse` | Parse ISO string to `Instant` |
+| `useTemporalFrom` | Parse ISO to `instant` \| `plainDate` \| … |
+| `useTemporalSafeParse` | Non-throwing parse |
 | `useTemporalDiff` | `Duration` between instants |
 | `useTemporalWeek` | ISO week `PlainDate[]` |
 | `useTemporalMonth` | Month `PlainDate[]` |
 | `useTemporalYear` | First day of each month in a year |
+| `useTemporalElapsed` | Seconds since an instant |
+| `useTemporalStopwatch` | Live elapsed duration from start |
+| `useTemporalLocalDate` | Today in a time zone |
+| `useTemporalCompare` | Memoized compare |
+| `useTemporalWithin` | Inclusive range membership |
+| `useTemporalAdd` | Memoized `.add()` |
 
 Examples for each hook: [`../examples/README.md`](../examples/README.md). Narrative API docs: [`../docs/api-reference.md`](../docs/api-reference.md).

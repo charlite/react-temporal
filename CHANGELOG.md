@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-10-08
+
+### Added
+
+- `hasNativeTemporal()` runtime probe.
+- Hooks: `useTemporalFrom`, `useTemporalSafeParse`, `useTemporalElapsed`, `useTemporalStopwatch`, `useTemporalLocalDate`, `useTemporalCompare`, `useTemporalWithin`, `useTemporalAdd`, `useTemporalCountdownStatus`.
+- `pauseWhenHidden` option on live clock hooks (battery-friendly tab background behavior).
+- `onComplete` / `intervalMs` options on `useTemporalCountdown`.
+- `runIfPast` option on `useTemporalSchedule`.
+
+### Changed
+
+- Default polyfill fallback is **`temporal-polyfill`** (smaller, spec-current) instead of `@js-temporal/polyfill` (`@js-temporal/polyfill` remains an optional peer for apps that prefer it).
+- TypeScript types sourced from `temporal-polyfill`.
+- Clock hooks share `useTemporalTicker`; interval hooks use stable duration dependency keys.
+- `useTemporalRelative` unit selection prefers the finest unit with magnitude ≥ 1 (e.g. 90 minutes, not 2 hours).
+- `useTemporalSchedule` runs immediately when the target instant is already past (configurable).
+
 ## [1.0.0] - 2026-10-08
 
 ### Added
@@ -69,6 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation and usage instructions in `README.md`.
 - Semantic versioning and changelog support.
 
+[1.1.0]: https://github.com/charlite/react-temporal/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/charlite/react-temporal/compare/v0.0.3...v1.0.0
 [0.0.3]: https://github.com/charlite/react-temporal/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/charlite/react-temporal/compare/v0.0.1...v0.0.2

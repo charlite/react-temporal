@@ -7,14 +7,14 @@
 ```ts
 import { getTemporal, Temporal } from 'react-temporal';
 
-// getTemporal() checks globalThis.Temporal first, then falls back to @js-temporal/polyfill
+// getTemporal() checks globalThis.Temporal first, then falls back to temporal-polyfill
 const T = getTemporal();
 ```
 
 Resolution order:
 
 1. **`globalThis.Temporal`** — used when the host provides native Temporal
-2. **`@js-temporal/polyfill`** — loaded when native Temporal is unavailable (optional dependency)
+2. **`temporal-polyfill`** — loaded when native Temporal is unavailable (optional dependency)
 
 You rarely need to call `getTemporal()` directly; hooks use it internally.
 
@@ -68,7 +68,7 @@ No global import is required — the package loads it when native Temporal is mi
 
 ## Testing
 
-In **Vitest** with `jsdom`, native Temporal is typically unavailable. This library resolves `@js-temporal/polyfill` inside `src/temporal.ts`, so tests do not need to assign `globalThis.Temporal` unless your app code reads the global directly.
+In **Vitest** with `jsdom`, native Temporal is typically unavailable. This library imports `temporal-polyfill` inside `src/temporal.ts`, so tests do not need to assign `globalThis.Temporal` unless your app code reads the global directly.
 
 ## FAQ
 

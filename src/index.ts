@@ -1,4 +1,4 @@
-export { getTemporal, Temporal } from './temporal';
+export { getTemporal, hasNativeTemporal, Temporal } from './temporal';
 export type { TemporalNamespace } from './temporal';
 export * from './types';
 
@@ -13,9 +13,18 @@ export * from './hooks/useTemporalFormat';
 export * from './hooks/useTemporalRange';
 export * from './hooks/useTemporalRelative';
 export * from './hooks/useTemporalCountdown';
+export * from './hooks/useTemporalCountdownStatus';
 export * from './hooks/useTemporalSchedule';
 export * from './hooks/useTemporalParse';
+export * from './hooks/useTemporalFrom';
+export * from './hooks/useTemporalSafeParse';
 export * from './hooks/useTemporalDiff';
 export * from './hooks/useTemporalWeek';
 export * from './hooks/useTemporalMonth';
 export * from './hooks/useTemporalYear';
+export * from './hooks/useTemporalElapsed';
+export * from './hooks/useTemporalStopwatch';
+export * from './hooks/useTemporalLocalDate';
+export * from './hooks/useTemporalCompare';
+export * from './hooks/useTemporalWithin';
+export * from './hooks/useTemporalAdd';
