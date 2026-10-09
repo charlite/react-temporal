@@ -11,8 +11,9 @@ React hooks for date and time built on the JavaScript [Temporal API](https://tc3
 | [Polyfill guide](./polyfill.md) | Native vs polyfill runtime, SSR, and browser support |
 | [API reference](./api-reference.md) | Every hook, utility, and type export |
 | [TypeScript](./typescript.md) | Type imports, generics, and IDE support |
-| [Migration guide](./migration.md) | Upgrading from 0.0.1 / 0.0.2 to 0.0.3 |
+| [Migration guide](./migration.md) | Upgrading across major versions |
 | [Examples](../examples/README.md) | Copy-paste React components for each hook |
+| [Agent knowledge (OKF)](../knowledge/index.md) | OKF v0.2 bundle for AI agents |
 
 ## Quick reference
 
@@ -42,9 +43,9 @@ function Dashboard() {
 
 ## Requirements
 
-- **Node.js** 22+ (development and CI)
+- **Node.js** 26+ (development and CI)
 - **React** 17, 18, or 19
-- **Temporal** — native in modern browsers, or a polyfill for Node.js / Safari (see [Polyfill guide](./polyfill.md))
+- **Temporal** — native in modern browsers and Node.js 26+, or a polyfill elsewhere (see [Polyfill guide](./polyfill.md))
 
 ## Support
 

@@ -30,7 +30,7 @@ You rarely need to call `getTemporal()` directly; hooks use it internally.
 
 ## Node.js
 
-Native Temporal is available behind a flag in Node.js 24 (`--harmony-temporal`) but is **not** recommended for production yet. Use a polyfill in Node.js services and SSR:
+**Node.js 26+** ships Temporal by default in current releases. Older Node versions and some test environments (for example jsdom) still need a polyfill for SSR and unit tests:
 
 ```bash
 npm install temporal-polyfill
@@ -68,11 +68,7 @@ No global import is required — the package loads it when native Temporal is mi
 
 ## Testing
 
-In Jest with `jsdom`, native Temporal is typically unavailable. Add to your setup file:
-
-```ts
-import 'temporal-polyfill/global';
-```
+In **Vitest** with `jsdom`, native Temporal is typically unavailable. This library resolves `@js-temporal/polyfill` inside `src/temporal.ts`, so tests do not need to assign `globalThis.Temporal` unless your app code reads the global directly.
 
 ## FAQ
 
@@ -86,7 +82,7 @@ import { Temporal } from 'react-temporal';
 
 **Can I use only native Temporal and skip the polyfill?**
 
-Yes, if you only support browsers with native Temporal and do not run hooks on the server. Remove optional polyfill dependencies and ensure your build does not resolve `@js-temporal/polyfill`.
+Yes, if you only support browsers with native Temporal and run Node.js 26+ on the server. Remove optional polyfill dependencies and ensure your build does not resolve `@js-temporal/polyfill`.
 
 **Does the polyfill get bundled into my app?**
 

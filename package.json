@@ -1,7 +1,7 @@
 {
   "name": "react-temporal",
-  "version": "0.0.3",
-  "description": "React hooks for date and time using the JavaScript Temporal API — native in modern browsers, polyfill-ready for Node.js and Safari.",
+  "version": "1.0.0",
+  "description": "React hooks for date and time using the JavaScript Temporal API — native in modern browsers and Node.js 26+, polyfill-ready elsewhere.",
   "type": "module",
   "sideEffects": false,
   "main": "dist/index.cjs",
@@ -23,9 +23,9 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "lint:fix": "eslint \"src/**/*.{ts,tsx}\" --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
@@ -70,7 +70,8 @@
     "datetime",
     "javascript",
     "intl",
-    "polyfill"
+    "polyfill",
+    "okf"
   ],
   "author": {
     "name": "charlite",
@@ -79,27 +80,25 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=26.0.0"
   },
   "devDependencies": {
-    "@jest/globals": "^30.0.5",
+    "@eslint/js": "^10.0.1",
     "@rollup/plugin-typescript": "^12.3.0",
     "@testing-library/react": "^16.3.0",
-    "@types/jest": "^30.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.51.0",
-    "@typescript-eslint/parser": "^8.63.0",
-    "eslint": "^8.56.0",
-    "jest": "^30.5.1",
-    "jest-environment-jsdom": "^30.2.0",
-    "prettier": "^3.9.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "rollup": "^4.63.1",
-    "ts-jest": "^29.4.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitest/coverage-v8": "^5.0.3",
+    "eslint": "^10.12.0",
+    "jsdom": "^27.0.0",
+    "prettier": "^3.6.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "rollup": "^4.52.0",
     "tslib": "^2.8.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^5.0.3"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0 || ^19.0.0",

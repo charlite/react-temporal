@@ -4,7 +4,7 @@ This guide walks you through installing **react-temporal** and using it in a Rea
 
 ## Prerequisites
 
-- Node.js **22** or later
+- Node.js **26** or later (for local development of this repo)
 - React **17**, **18**, or **19**
 - A bundler that supports ES modules (Vite, Next.js, Webpack 5, etc.)
 
@@ -16,9 +16,9 @@ npm install react-temporal
 
 ## 2. Add a polyfill (if needed)
 
-Skip this step if you only target browsers with native Temporal (Chrome 144+, Firefox 139+, Edge 144+).
+Skip this step if you only target browsers with native Temporal (Chrome 144+, Firefox 139+, Edge 144+) **and** run Node.js 26+ on the server without needing a fallback.
 
-For **Node.js SSR**, **Safari**, or mixed environments:
+For **Safari**, **Node.js &lt; 26**, or mixed environments:
 
 ```bash
 # Recommended — smaller bundle (~20 KB gzip)

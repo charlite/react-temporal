@@ -1,5 +1,53 @@
 # Migration guide
 
+## Upgrading to 1.0.0 from 0.0.3
+
+Version **1.0.0** aligns the repo with the 2026 Temporal ecosystem and modern tooling. Library APIs are unchanged; development and CI requirements changed.
+
+### Node.js
+
+**Before:** Node.js 22+
+
+**After:** Node.js **26+** (native Temporal in supported releases)
+
+```bash
+nvm install 26
+nvm use 26
+```
+
+Update GitHub Actions / CI images to Node 26. End-user apps on older Node versions can still use **react-temporal** with a Temporal polyfill.
+
+### Testing (contributors)
+
+**Before:** Jest + `jest.config.json`
+
+**After:** Vitest + `vitest.config.ts`
+
+```bash
+npm test          # vitest run
+npm run test:watch
+npm run test:coverage
+```
+
+Timer mocks use `vi` instead of `jest`:
+
+```diff
+- jest.useFakeTimers();
++ vi.useFakeTimers();
+```
+
+### Linting (contributors)
+
+**Before:** `.eslintrc.json`
+
+**After:** `eslint.config.js` (ESLint 10 flat config)
+
+### Agent / knowledge layout
+
+New OKF v0.2 bundle at [`knowledge/`](../knowledge/index.md) and [`AGENTS.md`](../AGENTS.md). No runtime impact on published npm code.
+
+---
+
 ## Upgrading to 0.0.3 from 0.0.1 / 0.0.2
 
 Version **0.0.3** modernizes the library for 2026 Temporal adoption. Most changes are additive; a few APIs changed behavior.
@@ -66,15 +114,6 @@ These now use `until()` internally. Access total units with `.total()`:
 - `useTemporalClock({ intervalMs })` — configurable live clock
 - `useTemporalZonedNow(timeZone, { intervalMs })` — zoned live clock
 - `useTemporalNow({ intervalMs, timeZone })` — extended options
-
-### Node.js version
-
-Development requires **Node.js 22+**. Update your local environment and CI:
-
-```bash
-nvm install 22
-nvm use 22
-```
 
 ### No action needed
 
