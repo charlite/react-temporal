@@ -1,4 +1,4 @@
-import typescript from '@rollup/plugin-typescript';
+import esbuild from 'rollup-plugin-esbuild';
 
 export default {
   input: 'src/index.ts',
@@ -22,10 +22,9 @@ export default {
     '@js-temporal/polyfill',
   ],
   plugins: [
-    typescript({
+    esbuild({
+      target: 'es2022',
       tsconfig: './tsconfig.json',
-      declaration: true,
-      declarationDir: 'dist',
     }),
   ],
 };
